@@ -28,7 +28,7 @@ public class StreamOperations {
 		System.out.println("Count of Female Employees : " + c + "\n");
 		
 		System.out.println("Employee Names in sorted order: \n");
-		empList.stream().sorted((x,y) -> x.getName().compareTo(y.getName())).forEach(e -> System.out.println(e.getName()));
+		empList.stream().map(e -> e.getName()).sorted((x,y) -> x.compareTo(y)).forEach(e -> System.out.println(e));
 		
 		System.out.println("\nEmployees sorted in increasing order of salary: \n");
 		empList.stream().sorted((x,y) -> x.getSal() - y.getSal()).forEach(e -> e.display());
