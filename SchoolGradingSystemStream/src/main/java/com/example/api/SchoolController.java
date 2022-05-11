@@ -1,6 +1,6 @@
 package com.example.api;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,12 +8,12 @@ import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.example.model.Student;
+import com.example.model.StudentSubjectTopper;
 import com.example.service.SchoolService;
 
 @RestController
@@ -34,20 +34,17 @@ public class SchoolController {
 	}
 	
 	@GetMapping(value = "/subjectTopper")
-	public ResponseEntity<List<Student>> getSubjectTopper() throws Exception
+	public ResponseEntity<List<StudentSubjectTopper>> getSubjectTopper() throws Exception
 	{
 		try 
 		{
-			Student se = schoolService.subjectTopper("Maths");
-			Student sc = schoolService.subjectTopper("Chemistry");
-			Student sp = schoolService.subjectTopper("Physics");
+			StudentSubjectTopper se = schoolService.subjectTopper("Maths");
+			StudentSubjectTopper sc = schoolService.subjectTopper("Chemistry");
+			StudentSubjectTopper sp = schoolService.subjectTopper("Physics");
 			
-			List <Student> result = new ArrayList<>();
-			result.add(se);
-			result.add(sc);
-			result.add(sp);
+			List <StudentSubjectTopper> result = Arrays.asList(se,sc,sp);
 			
-			return new ResponseEntity<List<Student>>(result,HttpStatus.OK);
+			return new ResponseEntity<List<StudentSubjectTopper>>(result,HttpStatus.OK);
 		} catch (Exception e) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, environment.getProperty(e.getMessage()));
 		}

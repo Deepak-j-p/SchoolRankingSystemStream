@@ -34,6 +34,7 @@ public class SchoolDAOImpl implements SchoolDAO {
 			s.setMathMarks(se.getMathMarks());
 			s.setChemMarks(se.getChemMarks());
 			s.setPhyMarks(se.getPhyMarks());
+			s.setTotalMarks();
 			list.add(s);
 		}
 		

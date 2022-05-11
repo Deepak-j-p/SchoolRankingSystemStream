@@ -1,13 +1,19 @@
 package com.example.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class Student {
 	
+	private int rank;
 	private int id;
 	private String name;
+	@JsonIgnore
 	private int mathMarks;
+	@JsonIgnore
 	private int chemMarks;
+	@JsonIgnore
 	private int phyMarks;
-	
+	private int totalMarks;
 	
 	public int getId() {
 		return id;
@@ -39,7 +45,18 @@ public class Student {
 	public void setPhyMarks(int phyMarks) {
 		this.phyMarks = phyMarks;
 	}
-	
+	public int getRank() {
+		return rank;
+	}
+	public void setRank(int rank) {
+		this.rank = rank;
+	}
+	public int getTotalMarks() {
+		return totalMarks;
+	}
+	public void setTotalMarks() {
+		this.totalMarks = this.mathMarks + this.chemMarks + this.phyMarks;
+	}
 	
 
 }
